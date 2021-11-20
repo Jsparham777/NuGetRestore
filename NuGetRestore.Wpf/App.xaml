@@ -1,0 +1,19 @@
+﻿<Application x:Class="NuGetRestore.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             DispatcherUnhandledException="OnDispatcherUnhandledException">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <vm:ViewModelLocator xmlns:vm="clr-namespace:NuGetRestore.Wpf.ViewModels" x:Key="Locator"/>
+
+            <!--Applications styles-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Colours.xaml"/>
+                <ResourceDictionary Source="Styles/Windows.xaml"/>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
