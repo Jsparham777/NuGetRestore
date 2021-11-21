@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NuGetRestore.WorkService
+namespace NuGetRestore.WorkerService
 {
     public class Worker : BackgroundService
     {
