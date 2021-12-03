@@ -1,8 +1,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,18 +10,37 @@ namespace NuGetRestore.WorkerService
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
+        private readonly Settings _settings;
 
-        public Worker(ILogger<Worker> logger)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="options"></param>
+        public Worker(ILogger<Worker> logger, IOptions<Settings> options)
         {
             _logger = logger;
+            _settings = options.Value;
         }
 
+        /// <summary>
+        /// Executes on startup.
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            // Startup delay
+            Thread.Sleep(_settings.StartupDelay);
+
+            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
+                // Do some work here...
+                _logger.LogCritical("I'm not doing any REAL work!");
+
+                await Task.Delay(_settings.ServicePollRate, stoppingToken);
             }
         }
     }

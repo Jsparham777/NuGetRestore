@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuGetRestore.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:NuGetRestore.WebAPI.Controllers.WeatherForecastController.Get">
+            <summary>
+            Gets the weather forecast.
+            </summary>
+            <remarks>
+            Click the Try it out button to test this endpoint.
+            </remarks>
+            <response code="200">Returns the list of weather forecast entries.</response>
+        </member>
+    </members>
+</doc>
