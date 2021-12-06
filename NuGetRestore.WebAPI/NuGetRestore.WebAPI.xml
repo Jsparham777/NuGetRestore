@@ -4,6 +4,52 @@
         <name>NuGetRestore.WebAPI</name>
     </assembly>
     <members>
+        <member name="T:NuGetRestore.WebAPI.Controllers.TicketsV2Controller">
+            <summary>
+            Ticket endpoints.
+            </summary>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.#ctor(NuGetRestore.WebAPI.DataStore.BugsContext)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="db">Database context.</param>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.Get(NuGetRestore.WebAPI.QueryFilters.TicketQueryFilter)">
+            <summary>
+            Get all tickets.
+            </summary>
+            <returns>List of all tickets.</returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.GetById(System.Int32)">
+            <summary>
+            Gets a ticket by it's ID.
+            </summary>
+            <param name="id">The ticket ID.</param>
+            <returns>The <see cref="T:NuGetRestore.WebAPI.Models.Ticket"/>.</returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.Post(NuGetRestore.WebAPI.Models.Ticket)">
+            <summary>
+            Creates a ticket.
+            </summary>
+            <param name="ticket">The <see cref="T:NuGetRestore.WebAPI.Models.Ticket"/> to create.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.Put(System.Int32,NuGetRestore.WebAPI.Models.Ticket)">
+            <summary>
+            Updates a ticket for a given ID.
+            </summary>
+            <param name="id">The ticket ID.</param>
+            <param name="ticket">The <see cref="T:NuGetRestore.WebAPI.Models.Ticket"/> containing the updates.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Controllers.TicketsV2Controller.Delete(System.Int32)">
+            <summary>
+            Deletes a ticket for a given ID.
+            </summary>
+            <param name="id">The ticket ID.</param>
+            <returns></returns>
+        </member>
         <member name="M:NuGetRestore.WebAPI.Controllers.WeatherForecastController.Get">
             <summary>
             Gets the weather forecast.
@@ -12,6 +58,97 @@
             Click the Try it out button to test this endpoint.
             </remarks>
             <response code="200">Returns the list of weather forecast entries.</response>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.DataStore.BugsContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Creates the schema in the database.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:NuGetRestore.WebAPI.Models.Ticket">
+            <summary>
+            A ticket.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.TicketId">
+            <summary>
+            The ticket ID.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.ProjectId">
+            <summary>
+            The project ID.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.Title">
+            <summary>
+            The ticket title.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.Description">
+            <summary>
+            The ticket description.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.Owner">
+            <summary>
+            The ticket owner.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.ReportDate">
+            <summary>
+            Date when the ticket was reported.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.DueDate">
+            <summary>
+            Date when the ticket is due.
+            </summary>
+        </member>
+        <member name="P:NuGetRestore.WebAPI.Models.Ticket.Project">
+            <summary>
+            The <see cref="P:NuGetRestore.WebAPI.Models.Ticket.Project"/>.
+            </summary>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Models.Ticket.ValidateDescription">
+            <summary>
+            Validates that a description is present.
+            </summary>
+            <returns><c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.Description"/> has been provided, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Models.Ticket.ValidateFutureDueDate">
+            <summary>
+            Validates, when creating a ticket, the entered due date must be in the future.
+            </summary>
+            <returns>
+            <c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.TicketId"/> is provided.<para/>
+            <c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.DueDate"/> is not provided.<para/>
+            <c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.DueDate"/> is in the future, otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Models.Ticket.ValidateReportDatePresence">
+            <summary>
+            Validates, when an owner is assigned to the ticket, the report date must be present.
+            </summary>
+            <returns>
+            <c>true</c> if the owner is not provided.<para/>
+            <c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.ReportDate"/> has a value, otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Models.Ticket.ValidateDueDatePresence">
+            <summary>
+            Validates, when an owner is assigned to the ticket, the due date must be present.
+            </summary>
+            <returns>
+            <c>true</c> if the owner is not provided.
+            <c>true</c> if the <see cref="P:NuGetRestore.WebAPI.Models.Ticket.DueDate"/> has a value, otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:NuGetRestore.WebAPI.Models.Ticket.ValidateDueDateAfterReportDate">
+            <summary>
+            Validates, when the due date and report date are provided, the due date has to be later of equal to the report date.
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>
