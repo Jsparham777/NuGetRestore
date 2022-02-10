@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using System;
 using System.Security.Cryptography;
 
 namespace NuGetRestore.ConsoleApp

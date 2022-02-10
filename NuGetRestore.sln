@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31919.166
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuGetRestore.Blazor.Server", "NuGetRestore.Blazor\Server\NuGetRestore.Blazor.Server.csproj", "{FF336293-1962-4D7C-A5BB-8E687E1EBAE7}"
 EndProject
@@ -30,6 +30,11 @@ EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "NuGetRestore.WindowsApplicationPackaging", "NuGetRestore.WindowsApplicationPackaging\NuGetRestore.WindowsApplicationPackaging.wapproj", "{FE7F9944-24EA-4FE4-B169-048F4A926016}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetRestore.WATS", "NuGetRestore.WATS\NuGetRestore.WATS.csproj", "{36362462-6B0B-4DC0-9ABC-FD55749F78A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0C0E5E73-D632-4E87-94E2-B8E4812EDCD6}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
